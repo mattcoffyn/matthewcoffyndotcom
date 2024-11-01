@@ -1,7 +1,6 @@
 import localFont from 'next/font/local';
-import Image from 'next/image';
+import ProfilePhoto from '../components/ProfilePhoto';
 import styles from '../styles/about.module.css';
-import profilePhoto from '../../public/profilePhoto.png';
 
 const trats = localFont({
   src: '../fonts/TRATS.woff2',
@@ -17,17 +16,7 @@ export default function About() {
   return (
     <section className={`${styles.aboutGrid} ${trats.className}`}>
       <h1 className={styles.title}>About</h1>
-      <Image
-        alt="A picture of Matt looking kinda cool but admittedly quite moody."
-        src={profilePhoto}
-        width={700}
-        height={475}
-        sizes="100vw"
-        style={{
-          width: '100%',
-          height: 'auto',
-        }}
-      />
+      <ProfilePhoto />
       <div className={`${styles.bio} ${sans.className}`}>
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatibus
         velit ea quis nulla possimus laboriosam laudantium ratione inventore rem

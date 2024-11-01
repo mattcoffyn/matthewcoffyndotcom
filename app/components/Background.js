@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import powerlines from '../../public/powerlines.jpg';
-import lynchburg from '../../public/lynchburg.png';
+// import lynchburg from '../../public/lynchburg.png';
 import styles from '../styles/background.module.css';
 
 export default function Background() {
