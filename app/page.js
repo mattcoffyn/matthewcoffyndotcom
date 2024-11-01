@@ -16,7 +16,7 @@ export default function Page() {
     <section className={`${styles.home} ${trats.className}`}>
       <div className={styles.header}>
         <h1>Matthew Coffyn</h1>
-        <h2>Film Composer | Audio Designer</h2>
+        <h2>Film Composer | Sound Creative</h2>
       </div>
       <ul>
         <li>

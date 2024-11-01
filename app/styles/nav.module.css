@@ -27,25 +27,57 @@
   53%,
   57%,
   100% {
-    /* background: rgba(0, 0, 0, 0.5); */
-    background: linear-gradient(
-      90deg,
-      rgba(0, 0, 0, 0.5) 0%,
-      rgba(0, 0, 0, 0.203) 82%,
-      rgba(0, 0, 0, 0) 100%
-    );
+    background: rgba(0, 0, 0, 0.5);
   }
-
   20%,
   24%,
   55% {
-    /* background: rgba(0, 0, 0, 0.6); */
-    background: linear-gradient(
-      90deg,
-      rgba(0, 0, 0, 0.6) 0%,
-      rgba(0, 0, 0, 0.264) 82%,
-      rgba(0, 0, 0, 0) 100%
-    );
+    background: rgba(0, 0, 0, 0.6);
+  }
+}
+
+@keyframes dyingflicker {
+  0% {
+    text-shadow: 0 0 1px var(--reelPrimary), 0 0 5px var(--reelPrimary),
+      0 0 9px var(--reelPrimary), 0 0 15px var(--highlight3),
+      0 0 30px var(--highlight3), 0 0 45px var(--highlight3),
+      0 0 55px var(--highlight3), 0 0 80px var(--highlight3);
+  }
+  18% {
+    text-shadow: 0 0 1px var(--reelPrimary), 0 0 5px var(--reelPrimary),
+      0 0 8px var(--reelPrimary), 0 0 14px var(--highlight3),
+      0 0 28px var(--highlight3), 0 0 40px var(--highlight3),
+      0 0 50px var(--highlight3), 0 0 70px var(--highlight3);
+  }
+  22% {
+    text-shadow: 0 0 1px var(--reelPrimary), 0 0 5px var(--reelPrimary),
+      0 0 6px var(--reelPrimary), 0 0 10px var(--highlight3),
+      0 0 24px var(--highlight3), 0 0 32px var(--highlight3),
+      0 0 40px var(--highlight3), 0 0 50px var(--highlight3);
+  }
+  53% {
+    text-shadow: 0 0 1px var(--reelPrimary), 0 0 5px var(--reelPrimary),
+      0 0 3px var(--reelPrimary), 0 0 8px var(--highlight3),
+      0 0 12px var(--highlight3), 0 0 18px var(--highlight3),
+      0 0 20px var(--highlight3), 0 0 30px var(--highlight3);
+  }
+  68% {
+    text-shadow: 0 0 1px var(--reelPrimary), 0 0 5px var(--reelPrimary),
+      0 0 1px var(--reelPrimary), 0 0 4px var(--highlight3),
+      0 0 8px var(--highlight3), 0 0 10px var(--highlight3),
+      0 0 12px var(--highlight3), 0 0 20px var(--highlight3);
+  }
+  79% {
+    text-shadow: 0 0 1px var(--reelPrimary), 0 0 5px var(--reelPrimary),
+      0 0 2px var(--highlight3), 0 0 5px var(--highlight3),
+      0 0 7px var(--highlight3), 0 0 10px var(--highlight3);
+  }
+  90% {
+    text-shadow: 0 0 1px var(--reelPrimary), 0 0 2px var(--highlight3),
+      0 0 5px var(--highlight3);
+  }
+  100% {
+    text-shadow: 0px 0px 2px var(--reelPrimary);
   }
 }
 
@@ -59,11 +91,13 @@
   justify-content: center;
   align-items: start;
   transition: all 0.1s ease-out;
+  pointer-events: none;
+  background: none;
   z-index: 1;
 }
 
 .nav {
-  margin: 0;
+  margin: 0 0 0 4vw;
   padding: 0;
   height: 320px;
   display: flex;
@@ -72,6 +106,7 @@
   align-items: start;
   list-style-type: none;
   pointer-events: none;
+  background: none;
 }
 
 .navItem {
@@ -92,18 +127,12 @@
   bottom: 0;
   left: 0;
   height: 100vh;
-  width: 25vw;
-  /* background: rgba(0, 0, 0, 0.6); */
-  background: linear-gradient(
-    90deg,
-    rgba(0, 0, 0, 0.5) 0%,
-    rgba(0, 0, 0, 0.206) 82%,
-    rgba(0, 0, 0, 0) 100%
-  );
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.6);
   z-index: 0;
   pointer-events: none;
   opacity: 0;
-  transition: opacity 0.1s ease-out;
+  transition: opacity 0.5s ease-out;
 }
 
 .nav:hover .navItem:hover {
@@ -113,11 +142,16 @@
 .nav:hover .navItem:not(:hover) {
   opacity: 0.8;
   color: transparent;
-  text-shadow: 0px 0px 5px var(--reelPrimary);
+  text-shadow: 0px 0px 4px var(--reelText);
 }
 
-.nav:hover:before {
-  z-index: -2;
+.nav:hover::before {
   opacity: 1;
+  background: rgba(0, 0, 0, 0.6);
   animation: bgflicker 0.11s ease-in-out infinite alternate;
+}
+
+.burnout {
+  animation: dyingflicker 1s ease-in-out;
+  pointer-events: none;
 }
