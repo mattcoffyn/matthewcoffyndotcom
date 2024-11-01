@@ -52,6 +52,10 @@
   pointer-events: none;
 }
 
+.title li {
+  transition: all 0.3s ease-in-out;
+}
+
 .title a {
   margin: 0.3rem 0;
   pointer-events: auto;
