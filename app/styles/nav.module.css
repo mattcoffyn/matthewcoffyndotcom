@@ -1,0 +1,68 @@
+.navContainer {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: all 0.1s ease-out;
+}
+
+/* .navContainer:has(.nav:hover) {
+  background: rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0px 0px 135px 119px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0px 0px 135px 119px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 0px 135px 119px rgba(0, 0, 0, 0.3);
+} */
+
+.nav {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  list-style-type: none;
+  pointer-events: none;
+}
+
+.navItem {
+  font-size: 2rem;
+  letter-spacing: 0.5rem;
+  padding: 1.5rem 0;
+  margin-left: 3vw;
+  text-transform: uppercase;
+  pointer-events: auto;
+  /* cursor: pointer; */
+}
+
+@keyframes flicker {
+  0%,
+  18%,
+  22%,
+  25%,
+  53%,
+  57%,
+  100% {
+    text-shadow: 0 0 1px var(--reelPrimary), 0 0 5px var(--reelPrimary),
+      0 0 9px var(--reelPrimary), 0 0 15px var(--highlight2),
+      0 0 30px var(--highlight2), 0 0 45px var(--highlight2),
+      0 0 55px var(--highlight2), 0 0 80px var(--highlight2);
+  }
+
+  20%,
+  24%,
+  55% {
+    text-shadow: none;
+  }
+}
+
+.nav:hover .navItem:hover {
+  animation: flicker 0.11s ease-in-out infinite alternate;
+}
+
+.nav:hover .navItem:not(:hover) {
+  opacity: 0.8;
+  color: transparent;
+  text-shadow: 0px 0px 5px var(--reelPrimary);
+}
