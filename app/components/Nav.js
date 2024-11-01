@@ -15,16 +15,16 @@ export default function Nav() {
   return (
     <aside className={styles.navContainer}>
       <ul className={`${styles.nav} ${trats.className}`}>
-        <li className={styles.navItem}>
+        <li className={`${styles.navItem} blackout`}>
           <Link href="/">Home</Link>
         </li>
-        <li className={styles.navItem}>
+        <li className={`${styles.navItem} blackout`}>
           <Link href="/about">About</Link>
         </li>
-        <li className={styles.navItem}>
+        <li className={`${styles.navItem} blackout`}>
           <Link href="/listen">Listen</Link>
         </li>
-        <li className={styles.navItem}>
+        <li className={`${styles.navItem} blackout`}>
           <Link href="/contact">Contact</Link>
         </li>
       </ul>
