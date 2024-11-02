@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import localFont from 'next/font/local';
-import powerlines from '../public/powerlines.jpg';
 import styles from './styles/home.module.css';
 
 const trats = localFont({
@@ -8,7 +7,7 @@ const trats = localFont({
   display: 'swap',
 });
 
-export default function Page() {
+export default function Home() {
   return (
     <section className={`${styles.home} ${trats.className}`}>
       <div className={styles.header}>

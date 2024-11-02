@@ -13,7 +13,13 @@
   letter-spacing: 0.5rem;
 }
 
+.image {
+  filter: blur(0.4px);
+}
+
 .bio {
+  padding-right: 4vw;
   font-size: 1rem;
-  line-height: 2rem;
+  line-height: 1.8rem;
+  filter: blur(0.4px);
 }

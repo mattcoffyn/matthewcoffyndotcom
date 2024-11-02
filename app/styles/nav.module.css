@@ -162,6 +162,6 @@
 } */
 
 .burnout {
-  animation: dyingflicker 1s ease-in-out;
+  animation: dyingflicker 0.5s ease-in;
   pointer-events: none;
 }

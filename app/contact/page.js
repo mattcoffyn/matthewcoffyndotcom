@@ -1,5 +1,5 @@
 import localFont from 'next/font/local';
-import styles from '../styles/contact.module.css';
+import styles from './contact.module.css';
 
 const trats = localFont({
   src: '../fonts/TRATS.woff2',
@@ -16,7 +16,7 @@ export default function Contact() {
     <section className={`${styles.contactGrid} ${trats.className}`}>
       <h1 className={styles.title}>Contact</h1>
       <div className={`${styles.email} ${sans.className}`}>
-        <h2>Email</h2>
+        <h2 className={trats.className}>Email</h2>
         <p>
           If you want to discuss a project or just have a chat (I&#39;d love
           that), drop me an email and I&#39;ll get back to you ASAP
@@ -30,7 +30,7 @@ export default function Contact() {
         </a>
       </div>
       <div className={`${styles.links} ${sans.className}`}>
-        <h2>Socials</h2>
+        <h2 className={trats.className}>Socials</h2>
         <p>
           You can also find me on socials so feel free to reach out or follow me
           here.
