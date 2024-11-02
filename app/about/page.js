@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import localFont from 'next/font/local';
-import profilePhoto from '../../public/profilephoto.png';
+import profilePhoto from '../../public/profile2.jpg';
 import styles from '../styles/about.module.css';
 
 const trats = localFont({
