@@ -18,8 +18,8 @@ export default function Contact() {
       <div className={`${styles.email} ${sans.className}`}>
         <h2>Email</h2>
         <p>
-          If you want to discuss a project or just have a chat (I'd love that),
-          drop me an email and I'll get back to you ASAP
+          If you want to discuss a project or just have a chat (I&#39;d love
+          that), drop me an email and I&#39;ll get back to you ASAP
         </p>
         <a
           href="mailto:hello@matthewcoffyn.com"

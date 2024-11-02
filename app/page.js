@@ -1,11 +1,6 @@
 import localFont from 'next/font/local';
 import styles from './styles/home.module.css';
 
-// const drogz = localFont({
-//   src: './fonts/Drogowskaz.woff2',
-//   display: 'swap',
-// });
-
 const trats = localFont({
   src: './fonts/TRATS.woff2',
   display: 'swap',

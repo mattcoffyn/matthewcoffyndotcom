@@ -1,7 +1,5 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { usePathname } from 'next/navigation';
 import localFont from 'next/font/local';
 import BurnLink from './BurnLink';
 import styles from '../styles/nav.module.css';
