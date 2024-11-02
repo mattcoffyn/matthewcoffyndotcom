@@ -15,9 +15,9 @@ export default function Background() {
         alt="Image of dark sky behind power lines"
         src={powerlines}
         placeholder="blur"
-        quality={100}
-        fill={true}
-        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        quality={75}
+        fill
+        sizes="100vw"
         style={{
           objectFit: 'cover',
           zIndex: 0,

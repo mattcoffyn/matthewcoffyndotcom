@@ -1,4 +1,6 @@
+import Image from 'next/image';
 import localFont from 'next/font/local';
+import powerlines from '../public/powerlines.jpg';
 import styles from './styles/home.module.css';
 
 const trats = localFont({
