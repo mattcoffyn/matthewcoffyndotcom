@@ -6,6 +6,7 @@ export default function ProfilePhoto() {
     <Image
       alt="A picture of Matt looking kinda cool but admittedly quite moody."
       src={profilePhoto}
+      placeholder="blur"
       width={700}
       height={475}
       sizes="100vw"
