@@ -81,6 +81,12 @@
   }
 }
 
+@keyframes cancelBlackout {
+  100% {
+    opacity: 0;
+  }
+}
+
 .navContainer {
   top: 0;
   left: 0;
@@ -91,7 +97,7 @@
   justify-content: center;
   align-items: start;
   transition: all 0.1s ease-out;
-  pointer-events: none;
+  /* pointer-events: none; */
   background: none;
   z-index: 1;
 }
@@ -107,20 +113,25 @@
   list-style-type: none;
   pointer-events: none;
   background: none;
+  transition: opacity 0.5s ease-out;
 }
 
 .navItem {
+  margin: 1.5rem 0;
   font-size: 2rem;
   letter-spacing: 0.5rem;
-  padding: 1.5rem 0;
   text-transform: uppercase;
   pointer-events: auto;
+}
+
+.navLink {
+  padding: 1.5rem 0;
   opacity: 0.95;
   color: transparent;
   text-shadow: 0px 0px 2px var(--reelPrimary);
 }
 
-.nav:before {
+.blackout:before {
   content: '';
   position: absolute;
   top: 0;
@@ -135,21 +146,20 @@
   transition: opacity 0.5s ease-out;
 }
 
-.nav:hover .navItem:hover {
+.nav:hover .navLink:hover {
   animation: flicker 0.11s ease-in-out infinite alternate;
 }
 
-.nav:hover .navItem:not(:hover) {
+.nav:hover .navLink:not(:hover) {
   opacity: 0.8;
   color: transparent;
   text-shadow: 0px 0px 4px var(--reelText);
 }
-
-.nav:hover::before {
+/*
+.blackout:hover::before {
   opacity: 1;
-  background: rgba(0, 0, 0, 0.6);
   animation: bgflicker 0.11s ease-in-out infinite alternate;
-}
+} */
 
 .burnout {
   animation: dyingflicker 1s ease-in-out;
