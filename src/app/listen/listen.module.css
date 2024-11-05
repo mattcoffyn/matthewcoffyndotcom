@@ -1,10 +1,9 @@
 .listen {
-  padding-right: 4vw;
+  /* padding-right: 4vw; */
   padding-top: 6rem;
 }
 
 .title {
-  grid-column: 1/3;
   text-align: center;
   font-size: 4rem;
   color: transparent;
@@ -13,9 +12,9 @@
   letter-spacing: 0.5rem;
 }
 
-.players {
-  margin-top: 3rem;
-}
+/* .players {
+  margin: 3rem auto;
+} */
 .canvas {
   /* filter: blur(1px); */
   margin: 1rem 0;

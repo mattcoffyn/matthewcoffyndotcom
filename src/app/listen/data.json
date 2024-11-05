@@ -1,9 +1,9 @@
 [
   {
     "id": 1,
-    "name": "suspend_in_space",
-    "path": "https://res.cloudinary.com/dsjs9ozws/video/upload/s--F3QOAZcN--/f_auto:video,q_auto/v1/mattcoffyndotcom/audio/suspend_in_place",
-    "svgPath": "/suspend_in_space.svg",
+    "name": "suspend_in_place",
+    "path": "https://res.cloudinary.com/dsjs9ozws/video/upload/v1730804253/mattcoffyndotcom/audio/suspend_in_place.mp3",
+    "svgPath": "/suspend_in_place.svg",
     "category": "music",
     "type": "audio/mpeg",
     "duration": 51
@@ -11,10 +11,46 @@
   {
     "id": 2,
     "name": "searching",
-    "path": "https://res.cloudinary.com/dsjs9ozws/video/upload/s--iUjDQpwN--/f_auto:video,q_auto/v1/mattcoffyndotcom/audio/searching",
+    "path": "https://res.cloudinary.com/dsjs9ozws/video/upload/v1730804249/mattcoffyndotcom/audio/searching.mp3",
     "svgPath": "/searching.svg",
     "category": "spaces",
     "type": "audio/mpeg",
     "duration": 35
+  },
+  {
+    "id": 3,
+    "name": "_interupt",
+    "path": "https://res.cloudinary.com/dsjs9ozws/video/upload/v1730804249/mattcoffyndotcom/audio/_interupt.mp3",
+    "svgPath": "/_interupt.svg",
+    "category": "spaces",
+    "type": "audio/mpeg",
+    "duration": 44
+  },
+  {
+    "id": 4,
+    "name": "reactor",
+    "path": "https://res.cloudinary.com/dsjs9ozws/video/upload/v1730804249/mattcoffyndotcom/audio/reactor.mp3",
+    "svgPath": "/reactor.svg",
+    "category": "spaces",
+    "type": "audio/mpeg",
+    "duration": 73
+  },
+  {
+    "id": 5,
+    "name": "earthfall",
+    "path": "https://res.cloudinary.com/dsjs9ozws/video/upload/v1730804249/mattcoffyndotcom/audio/earthfall.mp3",
+    "svgPath": "/earthfall.svg",
+    "category": "spaces",
+    "type": "audio/mpeg",
+    "duration": 49
+  },
+  {
+    "id": 6,
+    "name": "SUN061024",
+    "path": "https://res.cloudinary.com/dsjs9ozws/video/upload/v1730804249/mattcoffyndotcom/audio/SUN061024.mp3",
+    "svgPath": "/SUN061024.svg",
+    "category": "spaces",
+    "type": "audio/mpeg",
+    "duration": 59
   }
 ]

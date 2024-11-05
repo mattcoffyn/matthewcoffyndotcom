@@ -1,3 +1,5 @@
+'use client';
+
 import { useState, useRef, useEffect } from 'react';
 import { FaPlay } from 'react-icons/fa';
 import { FaPause } from 'react-icons/fa';
@@ -13,8 +15,6 @@ const AudioPlayer = ({
   updateTrack,
   type,
   staticDuration,
-  audioRef,
-  handleAudioPlay,
 }) => {
   // state
   const [isPlaying, setIsPlaying] = useState(false);
@@ -22,18 +22,18 @@ const AudioPlayer = ({
   const [currentTime, setCurrentTime] = useState(0);
 
   // references
-  // const audioPlayer = useRef(); // reference our audio component
+  const audioPlayer = useRef(); // reference our audio component
   const progressBar = useRef(); // reference our progress bar
   const waveformFill = useRef(); // reference our progress bar
   const animationRef = useRef(); // reference the animation
 
   useEffect(() => {
-    const seconds = Math.floor(staticDuration);
+    const seconds = staticDuration;
     setDuration(seconds);
     progressBar.current.max = seconds;
   }, [
-    audioRef?.current?.loadedmetadata,
-    audioRef?.current?.readyState,
+    audioPlayer?.current?.loadedmetadata,
+    audioPlayer?.current?.readyState,
     staticDuration,
   ]);
 
@@ -49,38 +49,42 @@ const AudioPlayer = ({
     const prevValue = isPlaying;
     setIsPlaying(!prevValue);
     if (!prevValue) {
-      audioRef.current.play();
+      audioPlayer.current.play();
       animationRef.current = requestAnimationFrame(whilePlaying);
       updateTrack(trackId);
-      handleAudioPlay();
+      console.log('play');
+      console.log(audioPlayer.current);
     } else {
-      audioRef.current.pause();
+      audioPlayer.current.pause();
       cancelAnimationFrame(animationRef.current);
       updateTrack(0);
+      console.log('pause');
+      console.log(audioPlayer.current);
     }
   };
 
   useEffect(() => {
     if (trackPlaying !== trackId && trackId !== 0) {
-      audioRef?.current.pause();
+      audioPlayer?.current.pause();
       cancelAnimationFrame(animationRef.current);
       setIsPlaying(false);
     }
   }, [trackPlaying, trackId]);
 
   const whilePlaying = () => {
-    progressBar.current.value = audioRef.current.currentTime;
+    progressBar.current.value = audioPlayer.current.currentTime;
     changePlayerCurrentTime();
     animationRef.current = requestAnimationFrame(whilePlaying);
   };
 
   const changeRange = () => {
-    audioRef.current.currentTime = progressBar.current.value;
+    audioPlayer.current.currentTime = progressBar.current.value;
     changePlayerCurrentTime();
   };
 
   const changePlayerCurrentTime = () => {
-    const progressPercentage = (progressBar.current.value / duration) * 100;
+    const progressPercentage =
+      (progressBar.current.value / staticDuration) * 100;
     waveformFill.current.style.setProperty(
       '--seek-before-width',
       `${progressPercentage}%`
@@ -96,8 +100,8 @@ const AudioPlayer = ({
         <div className={styles.audioPlayer}>
           <span className={styles.title}>{name}</span>
           <audio
-            ref={audioRef}
-            preload="metadata"
+            ref={audioPlayer}
+            preload="auto"
           >
             <source
               src={pathName}
@@ -145,12 +149,10 @@ const AudioPlayer = ({
             <div className={styles.currentTime}>
               {calculateTime(currentTime)}
             </div>
-            <div className={styles.duration}>
-              {duration && !isNaN(duration) && calculateTime(duration)}
-            </div>
+            <div className={styles.duration}>{calculateTime(duration)}</div>
           </div>
           <audio
-            ref={audioRef}
+            ref={audioPlayer}
             preload="auto"
           >
             <source
