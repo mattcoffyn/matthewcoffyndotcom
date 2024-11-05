@@ -1,10 +1,16 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
+import localFont from 'next/font/local';
 import { FaPlay } from 'react-icons/fa';
 import { FaPause } from 'react-icons/fa';
 import useMediaQuery from '@/components/useMediaQuery';
 import styles from './audioplayer.module.css';
+
+const ibm = localFont({
+  src: '../fonts/3270Medium.woff2',
+  display: 'swap',
+});
 
 const AudioPlayer = ({
   trackId,
@@ -22,7 +28,7 @@ const AudioPlayer = ({
   const [currentTime, setCurrentTime] = useState(0);
 
   // references
-  const audioPlayer = useRef(); // reference our audio component
+  const audioRef = useRef(); // reference our audio component
   const progressBar = useRef(); // reference our progress bar
   const waveformFill = useRef(); // reference our progress bar
   const animationRef = useRef(); // reference the animation
@@ -32,8 +38,8 @@ const AudioPlayer = ({
     setDuration(seconds);
     progressBar.current.max = seconds;
   }, [
-    audioPlayer?.current?.loadedmetadata,
-    audioPlayer?.current?.readyState,
+    audioRef?.current?.loadedmetadata,
+    audioRef?.current?.readyState,
     staticDuration,
   ]);
 
@@ -49,36 +55,32 @@ const AudioPlayer = ({
     const prevValue = isPlaying;
     setIsPlaying(!prevValue);
     if (!prevValue) {
-      audioPlayer.current.play();
+      audioRef.current.play();
       animationRef.current = requestAnimationFrame(whilePlaying);
       updateTrack(trackId);
-      console.log('play');
-      console.log(audioPlayer.current);
     } else {
-      audioPlayer.current.pause();
+      audioRef.current.pause();
       cancelAnimationFrame(animationRef.current);
       updateTrack(0);
-      console.log('pause');
-      console.log(audioPlayer.current);
     }
   };
 
   useEffect(() => {
     if (trackPlaying !== trackId && trackId !== 0) {
-      audioPlayer?.current.pause();
+      audioRef?.current.pause();
       cancelAnimationFrame(animationRef.current);
       setIsPlaying(false);
     }
   }, [trackPlaying, trackId]);
 
   const whilePlaying = () => {
-    progressBar.current.value = audioPlayer.current.currentTime;
+    progressBar.current.value = audioRef.current.currentTime;
     changePlayerCurrentTime();
     animationRef.current = requestAnimationFrame(whilePlaying);
   };
 
   const changeRange = () => {
-    audioPlayer.current.currentTime = progressBar.current.value;
+    audioRef.current.currentTime = progressBar.current.value;
     changePlayerCurrentTime();
   };
 
@@ -97,10 +99,10 @@ const AudioPlayer = ({
   return (
     <>
       {!isActive ? (
-        <div className={styles.audioPlayer}>
+        <div className={`${styles.audioPlayer} ${ibm.className}`}>
           <span className={styles.title}>{name}</span>
           <audio
-            ref={audioPlayer}
+            ref={audioRef}
             preload="auto"
           >
             <source
@@ -152,7 +154,7 @@ const AudioPlayer = ({
             <div className={styles.duration}>{calculateTime(duration)}</div>
           </div>
           <audio
-            ref={audioPlayer}
+            ref={audioRef}
             preload="auto"
           >
             <source
