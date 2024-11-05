@@ -1,0 +1,167 @@
+.audioPlayer {
+  width: 100%;
+  max-width: 1024px;
+  align-self: start;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  padding: 1rem 0;
+  margin: 0;
+  border-top: 4px solid var(--reelPrimary);
+}
+
+.audioPlayer:last-of-type {
+  border-bottom: 4px solid var(--reelPrimary);
+}
+
+.title {
+  grid-column: 1/3;
+  height: 1rem;
+  font-weight: 500;
+}
+
+.playPause {
+  background: var(--highlight3);
+  border: none;
+  margin: 1rem 1rem;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 20px;
+  color: var(--highlight2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.play {
+  position: relative;
+  left: 2.6px;
+}
+
+.timeAndProgress {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* display: grid; */
+  /* grid-template-columns: auto 1fr auto; */
+  /* column-gap: 0.5rem; */
+  /* padding-right: 1rem; */
+}
+
+.currentTime,
+.duration {
+  font-family: monospace;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.currentTime {
+  margin-left: 1rem;
+}
+
+.waveformContainer {
+  --seek-before-width: 0;
+  height: 100%;
+  width: 100%;
+  max-width: 650px;
+  /* max-width: 800px; */
+  margin: 0 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  mask-size: contain;
+  -webkit-mask-size: contain;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-position: center;
+  background: linear-gradient(
+    90deg,
+    var(--highlight3) var(--seek-before-width),
+    var(--background2) var(--seek-before-width)
+  );
+}
+
+.progressBar {
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  z-index: 3;
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+  /* outline: none; */
+}
+
+.progressBar:active {
+  cursor: grabbing;
+  cursor: -moz-grabbing;
+  cursor: -webkit-grabbing;
+}
+
+@media screen and (max-width: 600px) {
+  .audioPlayer {
+    grid-template-columns: auto 1fr;
+    padding: 1rem 0.5rem 0.5rem;
+  }
+
+  .timeAndProgress {
+    grid-template-columns: 1fr;
+  }
+
+  .titleAndTime {
+    grid-column: 1/3;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .title {
+    grid-column: unset;
+    height: 100%;
+    margin: 0;
+  }
+
+  .duration {
+    margin-left: auto;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .titleAndTime {
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+  }
+
+  .title {
+    width: 100%;
+    margin: 0;
+    line-height: 0.5;
+  }
+
+  .playPause {
+    margin: 1rem 0;
+  }
+
+  .currentTime {
+    margin: 0;
+  }
+
+  .timeAndProgress {
+    display: block;
+  }
+
+  .playPause {
+    margin: 0.5rem 0;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+
+  .play {
+    left: 1.95px;
+  }
+}

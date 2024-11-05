@@ -1,0 +1,33 @@
+.container {
+  margin-top: 20vh;
+  width: 60%;
+  height: 300px;
+  background: repeating-radial-gradient(#000 0 0.0001%, #fff 0 0.0002%) 50% 0/2500px
+      2500px,
+    repeating-conic-gradient(#000 0 0.0001%, #fff 0 0.0002%) 60% 60%/2500px
+      2500px;
+  background-blend-mode: difference;
+  animation: b 0.2s infinite alternate;
+  -webkit-box-shadow: 0px 0px 86px 29px rgba(255, 255, 255, 0.27);
+  -moz-box-shadow: 0px 0px 86px 29px rgba(255, 255, 255, 0.27);
+  box-shadow: 0px 0px 86px 29px rgba(255, 255, 255, 0.27);
+}
+@keyframes b {
+  100% {
+    background-position: 50% 0, 60% 50%;
+  }
+}
+
+.contact h1 {
+  background: repeating-radial-gradient(#000 0 0.0001%, #fff 0 0.0002%) 50% 0/2500px
+      2500px,
+    repeating-conic-gradient(#000 0 0.0001%, #fff 0 0.0002%) 60% 60%/2500px
+      2500px;
+  background-blend-mode: difference;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: b 0.2s infinite alternate;
+  -webkit-text-shadow: 0px 0px 86px 29px rgba(255, 255, 255, 0.27);
+  -moz-text-shadow: 0px 0px 86px 29px rgba(255, 255, 255, 0.27);
+  text-shadow: 5px 5px 30px rgba(255, 255, 255, 0.27);
+}

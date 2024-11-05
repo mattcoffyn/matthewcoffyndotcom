@@ -1,0 +1,101 @@
+[
+  {
+    "id": 1,
+    "name": "040123x",
+    "path": "https://res.cloudinary.com/dsjs9ozws/video/upload/v1673178286/Music/music/nxy9isfjpst2gu4ze8vw.mp3",
+    "svgPath": "/io8lktpv9muuarwdjxgg.png",
+    "category": "music",
+    "type": "audio/mpeg",
+    "duration": 209.594625
+  },
+  {
+    "id": 2,
+    "name": "Grand Temple (Discovery)",
+    "path": "https://res.cloudinary.com/dsjs9ozws/video/upload/v1673138693/Music/spaces/stqyjxjemgs4whea9eb3.mp3",
+    "svgPath": "/bxlnyuovbyuwbnhdgent.svg",
+    "category": "spaces",
+    "type": "audio/mpeg",
+    "duration": 59.94375
+  },
+  {
+    "id": 3,
+    "name": "The Hills (Trapped)",
+    "path": "https://res.cloudinary.com/dsjs9ozws/video/upload/v1673138693/Music/spaces/kxsv3ahnw8tgcg5lnxnk.mp3",
+    "svgPath": "/ngivjdofg8k6jaiv0tal.svg",
+    "category": "spaces",
+    "type": "audio/mpeg",
+    "duration": 59.917688
+  },
+  {
+    "id": 4,
+    "name": "Deep Space (Peace)",
+    "path": "https://res.cloudinary.com/dsjs9ozws/video/upload/v1673138692/Music/spaces/jxqmdsufbhlns3yap3m9.mp3",
+    "svgPath": "/ula9tgmvxud89sjdyvae.svg",
+    "category": "spaces",
+    "type": "audio/mpeg",
+    "duration": 59.94375
+  },
+  {
+    "id": 5,
+    "name": "Ambient Suspense Loop",
+    "path": "https://res.cloudinary.com/dsjs9ozws/video/upload/v1673257951/Music/adventuregame/vjy3yzum7shcndrgy3ys.mp3",
+    "svgPath": "/swos8t4i0nmnan4g25ql.svg",
+    "category": "adventureGame",
+    "type": "audio/mp3",
+    "duration": 59.977125
+  },
+  {
+    "id": 6,
+    "name": "Secret Stone Door Sting",
+    "path": "https://res.cloudinary.com/dsjs9ozws/video/upload/v1673257946/Music/adventuregame/jbclzqo4zlmejlajohdv.mp3",
+    "svgPath": "/drc8zmzeisfsaxwaksah.svg",
+    "category": "adventureGame",
+    "type": "audio/mp3",
+    "duration": 4.989375
+  },
+  {
+    "id": 7,
+    "name": "Corridor Suspense Loop",
+    "path": "https://res.cloudinary.com/dsjs9ozws/video/upload/v1673257948/Music/adventuregame/xltlo3yezqjzmxfwfr7l.mp3",
+    "svgPath": "/duebtbuxi0v1aft8chzy.svg",
+    "category": "adventureGame",
+    "type": "audio/mp3",
+    "duration": 60.00325
+  },
+  {
+    "id": 10,
+    "name": "Hackers",
+    "path": "https://res.cloudinary.com/dsjs9ozws/video/upload/v1673188854/Music/brief/vjs4maenx9q8h5z6l47y.mp3",
+    "svgPath": "/st7mkv50qwhrhrvkak7b.svg",
+    "category": "hackers",
+    "type": "audio/mpeg",
+    "duration": 294.413333
+  },
+  {
+    "id": 11,
+    "name": "It Hunts at Night",
+    "path": "https://res.cloudinary.com/dsjs9ozws/video/upload/v1688128958/Music/horror/xuprhxyvxatmnxpjzlxh.mp3",
+    "svgPath": "/hocxcgpaqbzlcqjmhmdt.svg",
+    "category": "horror",
+    "type": "audio/mpeg",
+    "duration": 150
+  },
+  {
+    "id": 12,
+    "name": "Uncover the Mystery",
+    "path": "https://res.cloudinary.com/dsjs9ozws/video/upload/v1688128965/Music/horror/pr8qgo8onrtysmibo9ei.mp3",
+    "svgPath": "/hen0bgrgdjrwpvmoviry.svg",
+    "category": "horror",
+    "type": "audio/mpeg",
+    "duration": 150
+  },
+  {
+    "id": 13,
+    "name": "Safe for Now",
+    "path": "https://res.cloudinary.com/dsjs9ozws/video/upload/v1688128970/Music/horror/vrl5szcwmiamrv3oyknj.mp3",
+    "svgPath": "/ubfwfugafyxdngys4xeq.svg",
+    "category": "horror",
+    "type": "audio/mpeg",
+    "duration": 150
+  }
+]
