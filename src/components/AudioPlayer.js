@@ -62,7 +62,7 @@ const AudioPlayer = ({
 
   useEffect(() => {
     if (trackPlaying !== trackId && trackId !== 0) {
-      audioRef.current.pause();
+      audioRef?.current.pause();
       cancelAnimationFrame(animationRef.current);
       setIsPlaying(false);
     }
@@ -133,7 +133,8 @@ const AudioPlayer = ({
             </div>
 
             <div className={styles.duration}>
-              {duration && !isNaN(duration) && calculateTime(duration)}
+              {/* {duration && !isNaN(duration) && calculateTime(duration)} */}
+              {calculateTime(duration)}
             </div>
           </div>
         </div>

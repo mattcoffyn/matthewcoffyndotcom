@@ -1,16 +1,16 @@
 'use client';
 import { useRef, useState } from 'react';
-// import localFont from 'next/font/local';
+import localFont from 'next/font/local';
 import AudioPlayer from '@/components/AudioPlayer';
+import data from './data.json';
 import styles from './listen.module.css';
+
 // import fx from './fx.module.css';
 
-// const trats = localFont({
-//   src: '../../fonts/TRATS.woff2',
-//   display: 'swap',
-// });
-
-const track = '/Sun6thOct24.mp3';
+const trats = localFont({
+  src: '../../fonts/TRATS.woff2',
+  display: 'swap',
+});
 
 export default function Listen() {
   const [trackPlaying, setTrackPlaying] = useState(0);
@@ -39,7 +39,7 @@ export default function Listen() {
         analyser.connect(audioContext.destination);
       }
       console.log(audioContext);
-      visualizeAudio(); // visualize audio
+      // visualizeAudio(); // visualize audio
       // visualizeAudio2(); // visualize audio
     }
   };
@@ -105,31 +105,36 @@ export default function Listen() {
   // }
 
   return (
-    <>
-      <canvas
+    <section className={`${styles.listen} ${trats.className}`}>
+      <h1 className={styles.title}>Listen</h1>
+      {/* <canvas
         className={styles.canvas}
         ref={canvasRef}
         width={1024}
         height={700}
-      />
+      /> */}
       {/* <canvas
         className={styles.canvas2}
         ref={canvasRef2}
         width={1024}
         height={500}
       /> */}
-      <AudioPlayer
-        trackID={1}
-        name="Sun6thOct24"
-        pathName="/Sun6thOct24.mp3"
-        svgPath="/Sun6thOct24.svg"
-        trackPlaying={trackPlaying}
-        updateTrack={updateTrack}
-        type="audio/mpeg"
-        staticDuration={273}
-        audioRef={audioRef}
-        handleAudioPlay={handleAudioPlay}
-      />
-    </>
+      <div className={styles.players}>
+        {data.map(({ name, path, id, svgPath, category, type, duration }) => (
+          // category === catId && (
+          <AudioPlayer
+            key={id}
+            trackId={id}
+            pathName={path}
+            name={name}
+            svgPath={svgPath}
+            trackPlaying={trackPlaying}
+            updateTrack={updateTrack}
+            type={type}
+            staticDuration={duration}
+          />
+        ))}
+      </div>
+    </section>
   );
 }

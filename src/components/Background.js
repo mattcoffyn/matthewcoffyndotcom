@@ -2,8 +2,8 @@
 
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-// import powerlines from '../../public/powerlinessmaller.jpg';
-// import lynchburg from '../../public/lynchburg.png';
+import powerlines from '../../public/powerlinessmaller.jpg';
+import lynchburg from '../../public/lynchburg.png';
 import styles from './background.module.css';
 
 export default function Background() {
@@ -22,7 +22,7 @@ export default function Background() {
         <Image
           className={styles.fadeIn}
           alt="Image of dark sky behind power lines"
-          src="https://res.cloudinary.com/dsjs9ozws/image/upload/v1730804669/mattcoffyndotcom/images/sj64aikkomsxifol0ncs.jpg"
+          src={powerlines}
           placeholder="blur"
           quality={75}
           fill

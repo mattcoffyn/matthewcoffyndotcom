@@ -1,23 +1,5 @@
 [
   {
-    "id": 1,
-    "name": "040123x",
-    "path": "https://res.cloudinary.com/dsjs9ozws/video/upload/v1673178286/Music/music/nxy9isfjpst2gu4ze8vw.mp3",
-    "svgPath": "/io8lktpv9muuarwdjxgg.png",
-    "category": "music",
-    "type": "audio/mpeg",
-    "duration": 209.594625
-  },
-  {
-    "id": 2,
-    "name": "Grand Temple (Discovery)",
-    "path": "https://res.cloudinary.com/dsjs9ozws/video/upload/v1673138693/Music/spaces/stqyjxjemgs4whea9eb3.mp3",
-    "svgPath": "/bxlnyuovbyuwbnhdgent.svg",
-    "category": "spaces",
-    "type": "audio/mpeg",
-    "duration": 59.94375
-  },
-  {
     "id": 3,
     "name": "The Hills (Trapped)",
     "path": "https://res.cloudinary.com/dsjs9ozws/video/upload/v1673138693/Music/spaces/kxsv3ahnw8tgcg5lnxnk.mp3",
