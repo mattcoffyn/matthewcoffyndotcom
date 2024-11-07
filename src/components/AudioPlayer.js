@@ -57,11 +57,11 @@ const AudioPlayer = ({
     if (!prevValue) {
       audioRef.current.play();
       animationRef.current = requestAnimationFrame(whilePlaying);
-      updateTrack(trackId);
+      updateTrack(trackId, audioRef.current);
     } else {
       audioRef.current.pause();
       cancelAnimationFrame(animationRef.current);
-      updateTrack(0);
+      updateTrack(0, audioRef.current);
     }
   };
 
@@ -104,6 +104,7 @@ const AudioPlayer = ({
           <audio
             ref={audioRef}
             preload="auto"
+            crossOrigin="anonymous"
           >
             <source
               src={pathName}
@@ -156,6 +157,7 @@ const AudioPlayer = ({
           <audio
             ref={audioRef}
             preload="auto"
+            crossOrigin="anonymous"
           >
             <source
               src={pathName}

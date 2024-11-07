@@ -13,10 +13,14 @@
   margin-bottom: 4rem;
 }
 
-.visualise {
+.canvas {
   height: 50%;
-  min-height: 300px;
-  width: 100%;
+  min-height: 100px;
+  width: 80vw;
+  padding-right: 2vw;
+  margin: 0 auto;
+  background: transparent;
+  /* filter: drop-shadow(30px 10px 4px #4444dd); */
 }
 
 .players {

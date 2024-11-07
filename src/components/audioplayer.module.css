@@ -6,7 +6,7 @@
   grid-template-columns: auto 1fr;
   margin-top: 2rem;
   color: var(--reelBackground);
-  border: 1px solid var(--reelText);
+  border: 1px solid var(--reelPrimary);
   border-radius: 20px 0 0 0;
   box-shadow: 0 0 2px 1px var(--reelText);
 }
@@ -46,7 +46,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: var(--background2);
+  background: var(--reelPrimary);
   /* display: grid; */
   /* grid-template-columns: auto 1fr auto; */
   /* column-gap: 0.5rem; */

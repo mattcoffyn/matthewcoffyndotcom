@@ -2,15 +2,85 @@
 @tailwind components;
 @tailwind utilities;
 
+/* 1. Use a more-intuitive box-sizing model */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* 2. Remove default margin */
+* {
+  margin: 0;
+}
+
+body {
+  /* 3. Add accessible line-height */
+  line-height: 1.5;
+  /* 4. Improve text rendering */
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 5. Improve media defaults */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 6. Inherit fonts for form controls */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* 7. Avoid text overflows */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/* 8. Improve line wrapping */
+p {
+  text-wrap: pretty;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+/*
+  9. Create a root stacking context
+*/
+#root,
+#__next {
+  isolation: isolate;
+}
+
 html,
 body {
   --reelBackground: rgba(33, 44, 53, 1);
   --reelBackGlow: rgba(33, 44, 53, 0.6);
-  --reelText: rgba(232, 227, 209, 0.75);
   --reelPrimary: rgba(232, 227, 209, 1);
+  --reelText: rgba(232, 227, 209, 0.75);
+  --reelLink: rgba(255, 212, 129, 0.76);
   --background2: rgba(178, 178, 168, 1);
-  --highlight3: rgba(219, 76, 68, 1);
   --highlight2: rgba(231, 170, 44, 1);
+  --highlight3: rgba(219, 76, 68, 1);
 
   margin: 0;
   padding: 0;
@@ -34,10 +104,6 @@ a {
   text-decoration: none;
 }
 
-* {
-  box-sizing: border-box;
-}
-
 .main {
   width: 100vw;
   height: 100vh;
@@ -49,6 +115,6 @@ a {
   z-index: 0;
 }
 
-.content {
+/* .content {
   position: relative;
-}
+} */
