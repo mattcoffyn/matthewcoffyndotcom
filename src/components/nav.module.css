@@ -128,7 +128,7 @@
 }
 
 .nav:hover .navLink:hover {
-  animation: flicker 0.11s ease-in-out infinite alternate;
+  /* animation: flicker 0.11s ease-in-out infinite alternate; */
 }
 
 .nav:hover .navLink:not(:hover) {
@@ -137,7 +137,7 @@
 }
 
 .burnout {
-  animation: dyingflicker 0.5s ease-in;
+  /* animation: dyingflicker 0.5s ease-in; */
   pointer-events: none;
 }
 

@@ -2,14 +2,13 @@
 import { useRef, useState } from 'react';
 import localFont from 'next/font/local';
 import AudioPlayer from '@/components/AudioPlayer';
-import data from './data.json';
+import data from './datatest.json';
 import styles from './listen.module.css';
-import { CldOgImage } from 'next-cloudinary';
 
 // import fx from './fx.module.css';
 
 const trats = localFont({
-  src: '../../fonts/TRATS.woff2',
+  src: '../fonts/TRATS.woff2',
   display: 'swap',
 });
 
@@ -47,10 +46,19 @@ export default function Listen() {
       const dataArray = new Uint8Array(bufferLength);
       canvasCtx.clearRect(0, 0, canvasWidth, canvasHeight);
       analyserRef.current.getByteTimeDomainData(dataArray);
-      canvasCtx.fillStyle = 'rgba(200, 200, 200, 0)';
+      canvasCtx.fillStyle = 'rgba(108, 108, 98, 0)';
       canvasCtx.fillRect(0, 0, canvasWidth, canvasHeight);
       canvasCtx.lineWidth = 2;
-      canvasCtx.strokeStyle = 'rgba(231, 170, 44, 1';
+      canvasCtx.strokeStyle = 'rgba(255, 255, 255, 1)';
+
+      canvasCtx.shadowOffsetX = 10;
+      canvasCtx.shadowOffsetY = 1;
+      canvasCtx.shadowColor = 'rgba(234, 54, 175, 0.4)';
+      canvasCtx.shadowBlur = 2;
+      canvasCtx.shadowOffsetX = -10;
+      canvasCtx.shadowOffsetY = -1;
+      canvasCtx.shadowColor = 'rgba(117, 250, 105, 0.4)';
+      canvasCtx.shadowBlur = 2;
       canvasCtx.beginPath();
       const sliceWidth = (canvasWidth * 1.0) / bufferLength;
       let x = 0;
@@ -88,12 +96,15 @@ export default function Listen() {
   return (
     <section className={styles.listen}>
       <h1 className={`${styles.title} ${trats.className}`}>Listen</h1>
-      <canvas
-        className={styles.canvas}
-        ref={canvasRef}
-        width={1000}
-        height={100}
-      />
+      <div className={styles.canvasContainer}>
+        <span style={{ display: `${trackPlaying && 'none'}` }}></span>
+        <canvas
+          className={styles.canvas}
+          ref={canvasRef}
+          width={1000}
+          height={100}
+        />
+      </div>
       <div className={styles.players}>
         {data.map(({ name, path, id, svgPath, category, type, duration }) => (
           <AudioPlayer

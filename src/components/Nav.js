@@ -23,15 +23,15 @@ export default function Nav() {
         />
         <BurnLink
           text="About"
-          slug="/about"
+          slug="/"
         />
         <BurnLink
           text="Listen"
-          slug="/listen"
+          slug="/"
         />
         <BurnLink
           text="Contact"
-          slug="/contact"
+          slug="/"
         />
       </ul>
     </aside>

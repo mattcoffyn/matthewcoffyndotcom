@@ -11,9 +11,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <Background />
+        {/* <Background /> */}
         <div className="main">
-          <Nav />
+          {/* <Nav /> */}
           <main className="content">{children}</main>
         </div>
       </body>

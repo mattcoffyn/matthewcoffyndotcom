@@ -1,14 +1,14 @@
 .audioPlayer {
-  width: 100%;
-  max-width: 500px;
+  /* width: 100%; */
+  max-width: 1000px;
   align-self: start;
   display: grid;
   grid-template-columns: auto 1fr;
   margin-top: 2rem;
   color: var(--reelBackground);
-  border: 1px solid var(--reelPrimary);
+  /* border: 1px solid var(--reelPrimary); */
   border-radius: 20px 0 0 0;
-  box-shadow: 0 0 2px 1px var(--reelText);
+  /* box-shadow: 0 0 2px 1px var(--reelText); */
 }
 
 .title {
@@ -18,20 +18,21 @@
   color: var(--reelText);
   text-shadow: 0 0 1px var(--reelText);
   background: var(--reelBackground);
-  padding: 0 1rem;
+  padding: 1rem 1rem 0 2rem;
   /* border: 1px solid var(--reelText); */
   border-radius: 20px 0 0 0;
+  display: none;
 }
 
 .playPause {
-  background: var(--highlight3);
+  background: var(--reelText);
   border: none;
-  margin: 1rem 1rem;
+  margin: 2rem 2rem;
   border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  font-size: 12px;
-  color: var(--reeltext);
+  width: 60px;
+  height: 60px;
+  font-size: 30px;
+  color: var(--reelBackground);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -39,7 +40,7 @@
 
 .play {
   position: relative;
-  left: 1px;
+  left: 3px;
 }
 
 .timeAndProgress {
@@ -51,6 +52,7 @@
   /* grid-template-columns: auto 1fr auto; */
   /* column-gap: 0.5rem; */
   padding-right: 1rem;
+  display: none;
 }
 
 .currentTime,
