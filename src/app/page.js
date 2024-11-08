@@ -1,11 +1,8 @@
 'use client';
+
 import { useRef, useState } from 'react';
 import localFont from 'next/font/local';
-import AudioPlayer from '@/components/AudioPlayer';
-import data from './datatest.json';
 import styles from './listen.module.css';
-
-// import fx from './fx.module.css';
 
 const trats = localFont({
   src: '../fonts/TRATS.woff2',
@@ -14,22 +11,28 @@ const trats = localFont({
 
 export default function Listen() {
   const [trackPlaying, setTrackPlaying] = useState(0);
-  const canvasRef = useRef(null); // to target the canvas
+  const canvasRef = useRef(null);
+  const audioRef = useRef(null);
   const source = useRef(null);
   const analyserRef = useRef(null);
 
-  const updateTrack = (trackToUpdate, currentAudioRef) => {
-    setTrackPlaying(trackToUpdate);
-    if (currentAudioRef) {
-      currentAudioRef.play();
+  const handleAudioPlay = () => {
+    const audioElement = audioRef.current;
+    if (audioElement && audioElement.readyState >= 2) {
+      audioElement.play();
       const audioContext = new AudioContext();
-      source.current = audioContext.createMediaElementSource(currentAudioRef);
-      console.log(currentAudioRef);
-      const analyser = audioContext.createAnalyser();
-      analyserRef.current = analyser;
-      source.current.connect(analyser);
-      analyser.connect(audioContext.destination);
-      visualizeAudio(); // visualize audio
+      if (!source.current) {
+        source.current = audioContext.createMediaElementSource(audioElement);
+        const analyser = audioContext.createAnalyser();
+        analyserRef.current = analyser;
+        source.current.connect(analyser);
+        analyser.connect(audioContext.destination);
+      }
+
+      visualizeAudio();
+    }
+    if (trackPlaying == 0) {
+      setTrackPlaying(1);
     }
     return;
   };
@@ -41,7 +44,7 @@ export default function Listen() {
 
     const renderFrame = () => {
       canvasCtx.clearRect(0, 0, canvasWidth, canvasHeight);
-      analyserRef.current.fftSize = 2048;
+      analyserRef.current.fftSize = 1024;
       const bufferLength = analyserRef.current.frequencyBinCount;
       const dataArray = new Uint8Array(bufferLength);
       canvasCtx.clearRect(0, 0, canvasWidth, canvasHeight);
@@ -78,19 +81,9 @@ export default function Listen() {
       canvasCtx.lineTo(canvasWidth, canvasHeight / 2);
       canvasCtx.stroke();
 
-      // const barWidth = (canvasWidth / bufferLength) * 2;
-      // let x = 0;
-      // for (let i = 0; i < bufferLength; i++) {
-      //   const barHeight = (dataArray[i] + 100) * 2.5;
-      //   if (barHeight > 0) {
-      //     canvasCtx.fillStyle = `rgb(0 ${Math.floor(barHeight)} 0)`;
-      //   }
-      //   canvasCtx.fillRect(x, 0, barWidth + 1, 800);
-      //   x += barWidth + 1;
-      // }
-      requestAnimationFrame(renderFrame); // Call renderFrame recursively
+      requestAnimationFrame(renderFrame);
     };
-    renderFrame(); // Start the rendering loop
+    renderFrame();
   }
 
   return (
@@ -106,19 +99,18 @@ export default function Listen() {
         />
       </div>
       <div className={styles.players}>
-        {data.map(({ name, path, id, svgPath, category, type, duration }) => (
-          <AudioPlayer
-            key={id}
-            trackId={id}
-            pathName={path}
-            name={name}
-            svgPath={svgPath}
-            trackPlaying={trackPlaying}
-            updateTrack={updateTrack}
-            type={type}
-            staticDuration={duration}
+        <audio
+          ref={audioRef}
+          preload="auto"
+          crossOrigin="anonymous"
+          controls
+          onPlay={handleAudioPlay}
+        >
+          <source
+            src="https://res.cloudinary.com/dsjs9ozws/video/upload/v1730804253/mattcoffyndotcom/audio/i_nrl.mp3"
+            type="audio/mpeg"
           />
-        ))}
+        </audio>
       </div>
     </section>
   );

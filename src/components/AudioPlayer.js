@@ -54,15 +54,14 @@ const AudioPlayer = ({
   const togglePlayPause = () => {
     const prevValue = isPlaying;
     setIsPlaying(!prevValue);
-    audioRef.current.volume = 0.7;
     if (!prevValue) {
-      // audioRef.current.play();
+      audioRef.current.play();
       animationRef.current = requestAnimationFrame(whilePlaying);
       updateTrack(trackId, audioRef.current);
     } else {
-      // audioRef.current.pause();
+      audioRef.current.pause();
       cancelAnimationFrame(animationRef.current);
-      updateTrack(0, audioRef.current);
+      updateTrack(trackId, audioRef.current);
     }
   };
 
