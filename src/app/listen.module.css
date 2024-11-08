@@ -17,10 +17,11 @@
   position: relative;
   left: 50%;
   transform: translateX(-50%);
-  /* height: 100px; */
-  width: 1000px;
+  width: 80vw;
+  height: 200px;
   border-radius: 5px;
-  background: radial-gradient(rgba(0, 150, 0, 0.4), black 120%);
+  /* background: linear-gradient(rgba(224, 189, 36, 0.555), black 100%); */
+  background: rgba(0, 15, 10, 1);
   overflow: hidden;
   filter: drop-shadow(0 0 1rem rgba(13, 29, 13, 0.7));
 }
@@ -39,29 +40,34 @@
 
 .canvas {
   background: transparent;
-  filter: drop-shadow(3px 3px 5px rgba(0, 0, 0, 0));
 }
 
-/* .canvasContainer:before,
-.canvasContainer:after {
+.canvasContainer::before,
+.canvasContainer::after {
   content: ' ';
   height: 100%;
   position: absolute;
   top: 0;
-  width: 40px;
-  z-index: 10;
-} */
-/* .canvasContainer:before {
-  box-shadow: 40px 0 20px -20px inset rgb(30 30 30);
+  width: 60px;
+  z-index: 8;
+}
+.canvasContainer::before {
+  box-shadow: 60px 0 20px -20px inset rgba(0, 15, 10, 1);
   left: -2px;
-} */
-.canvasContainer:after {
+}
+.canvasContainer::after {
+  box-shadow: -60px 0 20px -20px inset rgba(0, 15, 10, 1);
+  right: -2px;
+}
+
+/* .canvasContainer:after {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   width: 1000px;
-  height: 100px;
+  height: 200px;
+  z-index: 1000;
   background: repeating-linear-gradient(
     0deg,
     rgba(black, 0.15),
@@ -69,7 +75,7 @@
     transparent 5px,
     transparent 3px
   );
-}
+} */
 
 .players {
   display: flex;

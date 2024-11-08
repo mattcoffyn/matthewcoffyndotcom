@@ -3,7 +3,7 @@
   max-width: 1000px;
   align-self: start;
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: 1fr;
   margin-top: 2rem;
   color: var(--reelBackground);
   /* border: 1px solid var(--reelPrimary); */
@@ -108,7 +108,7 @@
   cursor: -webkit-grabbing;
 }
 
-@media screen and (max-width: 600px) {
+/* @media screen and (max-width: 600px) {
   .audioPlayer {
     grid-template-columns: auto 1fr;
     padding: 1rem 0.5rem 0.5rem;
@@ -134,9 +134,9 @@
   .duration {
     margin-left: auto;
   }
-}
+} */
 
-@media screen and (max-width: 500px) {
+/* @media screen and (max-width: 500px) {
   .titleAndTime {
     flex-wrap: wrap;
     margin-bottom: 1rem;
@@ -171,4 +171,4 @@
   .play {
     left: 1.95px;
   }
-}
+} */

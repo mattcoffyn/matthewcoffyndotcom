@@ -55,11 +55,11 @@ const AudioPlayer = ({
     const prevValue = isPlaying;
     setIsPlaying(!prevValue);
     if (!prevValue) {
-      audioRef.current.play();
+      // audioRef.current.play();
       animationRef.current = requestAnimationFrame(whilePlaying);
       updateTrack(trackId, audioRef.current);
     } else {
-      audioRef.current.pause();
+      // audioRef.current.pause();
       cancelAnimationFrame(animationRef.current);
       updateTrack(0, audioRef.current);
     }

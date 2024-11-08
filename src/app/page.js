@@ -20,9 +20,9 @@ export default function Listen() {
 
   const updateTrack = (trackToUpdate, currentAudioRef) => {
     setTrackPlaying(trackToUpdate);
-    if (currentAudioRef && currentAudioRef.readyState >= 2) {
+    if (currentAudioRef) {
+      currentAudioRef.play();
       const audioContext = new AudioContext();
-
       source.current = audioContext.createMediaElementSource(currentAudioRef);
       console.log(currentAudioRef);
       const analyser = audioContext.createAnalyser();
@@ -102,7 +102,7 @@ export default function Listen() {
           className={styles.canvas}
           ref={canvasRef}
           width={1000}
-          height={100}
+          height={200}
         />
       </div>
       <div className={styles.players}>
