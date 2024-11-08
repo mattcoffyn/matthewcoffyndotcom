@@ -24,6 +24,9 @@
   background: rgba(0, 15, 10, 1);
   overflow: hidden;
   filter: drop-shadow(0 0 1rem rgba(13, 29, 13, 0.7));
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .canvasContainer span {
@@ -38,8 +41,9 @@
   transform: translateY(-50%);
 }
 
-.canvas {
+.canvasContainer canvas {
   background: transparent;
+  height: 100%;
 }
 
 .canvasContainer::before,
