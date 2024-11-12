@@ -1,6 +1,9 @@
 import Image from 'next/image';
+import { Golos_Text } from 'next/font/google';
 import localFont from 'next/font/local';
 import styles from '@/styles/home.module.css';
+
+const golos = Golos_Text({ subsets: ['latin'] });
 
 const trats = localFont({
   src: '../fonts/TRATS.woff2',

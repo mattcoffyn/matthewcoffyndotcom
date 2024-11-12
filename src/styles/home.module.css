@@ -50,11 +50,13 @@
 
 .home ul {
   height: 320px;
+  margin-top: 10vh;
   list-style-type: none;
   font-size: 1.1rem;
   letter-spacing: 0.1rem;
   text-align: right;
   pointer-events: none;
+  z-index: 0;
 }
 
 .home li {
