@@ -7,11 +7,11 @@ import { LuPlay } from 'react-icons/lu';
 import { LuPause } from 'react-icons/lu';
 import { LuSkipBack } from 'react-icons/lu';
 import { LuSkipForward } from 'react-icons/lu';
-import useMediaQuery from '../../components/useMediaQuery';
+// import useMediaQuery from '../../components/useMediaQuery';
 import data from './data.json';
 import styles from './listen.module.css';
 import Image from 'next/image';
-import Canvas from '@/components/Canvas';
+import Track from '@/components/Track';
 
 const golos = Golos_Text({ subsets: ['latin'] });
 
@@ -22,13 +22,12 @@ const trats = localFont({
 
 export default function Listen() {
   const audioRef = useRef(null);
-
-  const progressBar = useRef(); // reference our progress bar
-  const waveformFill = useRef(); // reference our progress bar
-  const animationRef = useRef(); // reference the animation
-
+  const progressBar = useRef();
+  const waveformFill = useRef();
+  const animationRef = useRef();
   const [trackPlaying, setTrackPlaying] = useState(0);
   const [currentAudio, setCurrentAudio] = useState(null);
+  const [isContextSet, setIsContextSet] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
@@ -70,8 +69,16 @@ export default function Listen() {
     setIsPlaying(!prevValue);
     if (!prevValue) {
       console.log(`Playing track ${trackPlaying}`);
+      // if (!isContextSet) {
+      //   createAudioContext();
+      //   setIsContextSet(true);
+      // }
+      // visualizeAudio(
+      //   audioRef.current.children[trackPlaying].children[3].children[2]
+      // );
       currentAudio?.play();
       animationRef.current = requestAnimationFrame(whilePlaying);
+      // createAudioContext();
     } else {
       console.log(`Paused track ${trackPlaying}`);
       currentAudio?.pause();
@@ -80,7 +87,7 @@ export default function Listen() {
   };
 
   const handlePrevTrack = () => {
-    let i = trackPlaying;
+    let i = Number(trackPlaying);
     console.log(`⏮️ current trackPlaying={${trackPlaying}} `);
     if (trackPlaying == 0) {
       currentAudio.currentTime = 0;
@@ -88,7 +95,7 @@ export default function Listen() {
         `⏲️ currentAudio.currentTime = {${currentAudio.currentTime}}`
       );
     } else {
-      i = trackPlaying - 1;
+      i = Number(trackPlaying - 1);
       updateNewTrack(i);
     }
   };
@@ -97,7 +104,7 @@ export default function Listen() {
     let i = trackPlaying;
     console.log(`⏭️ current trackPlaying={${trackPlaying}} `);
     if (trackPlaying !== data.length - 1) {
-      i = trackPlaying + 1;
+      i = i + 1;
       updateNewTrack(i);
     } else {
       return;
@@ -160,24 +167,27 @@ export default function Listen() {
     setCurrentTime(progressBar.current.value);
   };
 
-  const isActive = useMediaQuery('(max-width: 600px)');
+  // const isActive = useMediaQuery('(max-width: 600px)');
 
   // const createAudioContext = () => {
   //   if (currentAudio && currentAudio.readyState >= 2) {
   //     const audioContext = new AudioContext();
-  //     if (!source.current) {
-  //       source.current = audioContext.createMediaElementSource(currentAudio);
-  //       const analyser = audioContext.createAnalyser();
-  //       analyserRef.current = analyser;
-  //       source.current.connect(analyser);
-  //       analyser.connect(audioContext.destination);
-  //     }
+  //     // if (!source.current) {
+  //     source.current = audioContext.createMediaElementSource(currentAudio);
+  //     console.log(source.current);
+  //     const analyser = audioContext.createAnalyser();
+  //     analyserRef.current = analyser;
+  //     source.current.connect(analyser);
+  //     analyser.connect(audioContext.destination);
+  //     // }
   //     visualizeAudio();
   //   }
   //   return;
   // };
 
   // const visualizeAudio = () => {
+  //   const canvasRef =
+  //     audioRef.current.children[trackPlaying].children[3].children[1];
   //   const canvasCtx = canvasRef.current.getContext('2d');
   //   const canvasHeight = canvasRef.current.height;
   //   const canvasWidth = canvasRef.current.width;
@@ -232,8 +242,8 @@ export default function Listen() {
       <h1 className={`${styles.title} ${trats.className}`}>Listen</h1>
       {/* <div className={styles.canvasContainer}>
         <span style={{ display: `${trackPlaying && 'none'}` }}></span>
-      </div> */}
-      {/* <canvas
+      </div>
+      <canvas
         className={styles.canvas}
         ref={canvasRef}
         width={1000}
@@ -275,6 +285,32 @@ export default function Listen() {
           <span className={`${styles.currentTime} ${golos.className}`}>
             {calculateLength(currentTime)}
           </span>
+          <div className={styles.controls}>
+            <button
+              type="button"
+              title="Previous Track"
+              onClick={handlePrevTrack}
+              className={styles.forwardBack}
+            >
+              <LuSkipBack className={styles.play} />
+            </button>
+            <button
+              type="button"
+              title="Play & Pause"
+              onClick={togglePlayPause}
+              className={styles.playPause}
+            >
+              {!isPlaying ? <LuPlay /> : <LuPause className={styles.pause} />}
+            </button>
+            <button
+              type="button"
+              title="Next Track"
+              onClick={handleNextTrack}
+              className={styles.forwardBack}
+            >
+              <LuSkipForward className={styles.play} />
+            </button>
+          </div>
 
           <span className={`${styles.duration} ${golos.className}`}>
             {duration
@@ -282,86 +318,28 @@ export default function Listen() {
               : calculateLength(data[trackPlaying].duration)}
           </span>
         </div>
-        <div className={styles.controls}>
-          <button
-            type="button"
-            title="Previous Track"
-            onClick={handlePrevTrack}
-            className={styles.forwardBack}
-          >
-            <LuSkipBack className={styles.play} />
-          </button>
-          <button
-            type="button"
-            title="Play & Pause"
-            onClick={togglePlayPause}
-            className={styles.playPause}
-          >
-            {!isPlaying ? <LuPlay /> : <LuPause className={styles.pause} />}
-          </button>
-          <button
-            type="button"
-            title="Next Track"
-            onClick={handleNextTrack}
-            className={styles.forwardBack}
-          >
-            <LuSkipForward className={styles.play} />
-          </button>
-        </div>
       </div>
       <div
         className={styles.players}
         ref={audioRef}
       >
         {data.map(({ name, path, id, svgPath, category, type, duration }) => (
-          <div
-            className={styles.player}
-            path={path}
+          <Track
             key={id}
-          >
-            <audio
-              id={id}
-              preload="metadata"
-              crossOrigin="anonymous"
-              controls
-              onTimeUpdate={handleTimeUpdate}
-              style={{ display: 'none' }}
-            >
-              <source
-                src={path}
-                type="audio/mpeg"
-              />
-            </audio>
-            <button
-              id={id}
-              type="button"
-              onClick={handleTrackSelector}
-              className={styles.playTrack}
-            >
-              {isPlaying && trackPlaying == id ? <LuPause /> : <LuPlay />}
-            </button>
-            <span className={`${styles.tracklistTitle} ${golos.className}`}>
-              {name}
-            </span>
-            {/* <div
-              className={styles.singleWaveform}
-              style={{
-                maskImage: `url(${svgPath})`,
-                WebkitMaskImage: `url(${svgPath})`,
-              }}
-            > */}
-            <div className={styles.canvasContainer}>
-              <span style={{ display: `${trackPlaying && 'none'}` }}></span>
-              <Canvas
-                audio={audioRef.current?.children[id].children[0]}
-                trigger={isPlaying}
-              />
-            </div>
-
-            <span className={`${styles.trackDuration} ${golos.className}`}>
-              {calculateLength(duration)}
-            </span>
-          </div>
+            name={name}
+            path={path}
+            id={id}
+            type={type}
+            duration={duration}
+            handleTimeUpdate={handleTimeUpdate}
+            handleTrackSelector={handleTrackSelector}
+            isPlaying={isPlaying}
+            golos={golos}
+            trackPlaying={trackPlaying}
+            audioRef={audioRef}
+            calculateLength={calculateLength}
+            currentAudio={currentAudio}
+          />
         ))}
       </div>
     </section>
