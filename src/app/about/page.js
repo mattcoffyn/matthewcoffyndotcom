@@ -29,25 +29,25 @@ export default function About() {
       </div>
 
       <div className={`${styles.bio} ${sans.className}`}>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam odio
-        quam, condimentum tincidunt eleifend ac, sagittis vitae dui. Fusce in
-        eleifend augue. Orci varius natoque penatibus et magnis dis parturient
-        montes, nascetur ridiculus mus. Donec sit amet commodo leo, at pretium
-        eros. <br />
+        Matthew is a multi-instrumentalist, composer & sound designer working
+        mostly in film and television. A saxophonist from a young age, his
+        creative focus has evolved over a lifetime in the music industry that
+        has honed his sound everywher from tiny DIY squats and the Royal Albert
+        Hall.
         <br />
-        Nullam ac sollicitudin nibh, eget tincidunt tortor. Integer et
-        condimentum mi. Pellentesque non urna leo. Aliquam sed nisl vel orci
-        ultricies consequat. Phasellus tincidunt vel orci nec interdum. Quisque
-        bibendum condimentum sapien at pulvinar. In eget tellus malesuada,
-        pellentesque dolor eu, malesuada turpis. Ut lobortis vulputate felis,
-        quis blandit nisl dignissim porttitor. Cras malesuada in mi vel
-        eleifend. Vestibulum pulvinar odio libero, in efficitur urna faucibus
-        at. Aliquam vestibulum magna id mauris luctus, vitae bibendum neque
-        tincidunt. Suspendisse quis varius nulla. Donec et gravida magna. Ut
-        tellus nisi, placerat ac dolor ac, vehicula sodales neque. Phasellus
-        facilisis augue sit amet velit blandit, vitae molestie est pretium.
-        Integer mauris orci, rutrum ut ultricies ut, posuere at nisl. Duis
-        porttitor mauris a hendrerit lobortis. <br />
+        <br />
+        After years on the road with his own bands and solo projects, as well as
+        live & studio session work, he transitioned into tour management while
+        he took time off performing to re-discover his love of experimentation
+        in synthesising and augmenting audio as creative expression.
+        <br />
+        <br />
+        With no prior formal training, he went on to obtain an MA in Media
+        Composition leading him to further develop his focus on creating sounds
+        and music reflecting those deep textural emotions underpinning the human
+        experience; uncovering the core sound of the internal state where
+        expression, desire, discomfort, tension and release reside.
+        <br />
       </div>
     </section>
   );

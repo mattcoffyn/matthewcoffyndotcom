@@ -72,11 +72,11 @@ export default function Track({
 
       canvasCtx.shadowOffsetX = 10;
       canvasCtx.shadowOffsetY = 1;
-      canvasCtx.shadowColor = 'rgba(234, 54, 175, 0.4)';
+      canvasCtx.shadowColor = 'rgba(255, 0, 80, 0.3)';
       canvasCtx.shadowBlur = 2;
       canvasCtx.shadowOffsetX = -10;
       canvasCtx.shadowOffsetY = -1;
-      canvasCtx.shadowColor = 'rgba(117, 250, 105, 0.4)';
+      canvasCtx.shadowColor = 'rgba(0, 30, 255, 0.5)';
       canvasCtx.shadowBlur = 2;
       canvasCtx.beginPath();
       const sliceWidth = (canvasWidth * 1.0) / bufferLength;
@@ -147,7 +147,7 @@ export default function Track({
             : `${styles.canvasContainer} ${styles.someBlur}`
         }
       >
-        {isPlaying && trackPlaying == id ? '' : <span />}
+        {!canvasCtx || !isPlaying ? <span /> : ''}
         {/* <span style={{ display: `${trackPlaying && 'none'}` }}></span> */}
 
         <canvas

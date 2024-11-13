@@ -25,6 +25,7 @@ export default function Listen() {
   const progressBar = useRef();
   const waveformFill = useRef();
   const animationRef = useRef();
+  const titleRef = useRef();
   const [trackPlaying, setTrackPlaying] = useState(0);
   const [currentAudio, setCurrentAudio] = useState(null);
   const [isContextSet, setIsContextSet] = useState(null);
@@ -168,26 +169,21 @@ export default function Listen() {
       '--seek-before-width',
       `${progressPercentage}%`
     );
+
     setCurrentTime(progressBar.current.value);
   };
 
   return (
     <section className={styles.listen}>
-      <h1 className={`${styles.title} ${trats.className}`}>Listen</h1>
-      {/* <div className={styles.canvasContainer}>
-        <span style={{ display: `${trackPlaying && 'none'}` }}></span>
-      </div>
-      <canvas
-        className={styles.canvas}
-        ref={canvasRef}
-        width={1000}
-        height={200}
-      /> */}
+      <h1
+        className={`${styles.title} ${trats.className} ${
+          isPlaying ? styles.titleBlur : ''
+        }`}
+      >
+        Listen
+      </h1>
 
       <div className={`${styles.playerControlContainer}`}>
-        <span className={`${styles.currentTitle} ${golos.className}`}>
-          {data[trackPlaying].name}
-        </span>
         <div
           className={`${styles.progressOuter} ${
             isPlaying ? styles.clearBlur : ''
@@ -215,6 +211,9 @@ export default function Listen() {
             onChange={changeRange}
           />
         </div>
+        <span className={`${styles.currentTitle} ${golos.className}`}>
+          {data[trackPlaying].name}
+        </span>
         <div className={`${styles.currentTrackInfo} `}>
           <span className={`${styles.currentTime} ${golos.className}`}>
             {calculateLength(currentTime)}
