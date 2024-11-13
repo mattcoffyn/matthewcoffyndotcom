@@ -1,5 +1,7 @@
 import Image from 'next/image';
 import localFont from 'next/font/local';
+import { Golos_Text } from 'next/font/google';
+
 import profilePhoto from '/public/profile2.jpg';
 import styles from './aboutAlt.module.css';
 
@@ -8,10 +10,7 @@ const trats = localFont({
   display: 'swap',
 });
 
-const sans = localFont({
-  src: '../../fonts/SwedenSansBook.woff2',
-  display: 'swap',
-});
+const sans = Golos_Text({ subsets: ['latin'] });
 
 export default function About() {
   return (
@@ -49,17 +48,6 @@ export default function About() {
         facilisis augue sit amet velit blandit, vitae molestie est pretium.
         Integer mauris orci, rutrum ut ultricies ut, posuere at nisl. Duis
         porttitor mauris a hendrerit lobortis. <br />
-        <br />
-        Morbi imperdiet bibendum massa, nec varius ligula pellentesque
-        ullamcorper. Ut ultrices est non nisi interdum, eu accumsan erat
-        porttitor. Nam porta id tellus in venenatis. Pellentesque vitae magna at
-        nisl vehicula cursus. Donec pretium et metus eget euismod. Donec
-        vulputate mi a orci semper tempus. Nunc finibus quis erat ornare mattis.
-        Aliquam erat volutpat. Etiam ut ipsum id quam dapibus ultrices et quis
-        risus. Nam vel consequat tellus, sit amet pellentesque dui. Cras
-        imperdiet purus ut tempus ultricies. Sed sodales, odio non tincidunt
-        tincidunt, lorem ante tempor nulla, ut consequat neque lectus sed lacus.
-        Nulla urna tortor, eleifend non nulla ut, dictum laoreet tellus.
       </div>
     </section>
   );

@@ -14,26 +14,26 @@
   text-shadow: 0px 0px 2px var(--reelText);
   text-transform: uppercase;
   letter-spacing: 0.5rem;
+  margin-bottom: -2rem;
 }
 
-.email {
-  font-size: 1.2rem;
+.email p,
+.links p {
+  margin: 0 auto;
+  font-size: 1rem;
   line-height: 2rem;
-}
-
-.links {
-  font-size: 1.2rem;
-  line-height: 2rem;
+  max-width: 750px;
 }
 
 .email h2,
 .links h2 {
-  font-size: 3rem;
+  font-size: 2rem;
+  line-height: 2rem;
   color: transparent;
   text-shadow: 0px 0px 1.5px var(--reelText);
   text-transform: uppercase;
   letter-spacing: 0.5rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .links ul {
@@ -51,7 +51,7 @@
 
 .email a {
   margin-top: 1rem;
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   letter-spacing: 0.1rem;
   text-shadow: 0px 0px 2px var(--reelText);
 }

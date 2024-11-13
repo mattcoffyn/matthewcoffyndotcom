@@ -1,4 +1,6 @@
 import localFont from 'next/font/local';
+import { Golos_Text } from 'next/font/google';
+
 import styles from './contact.module.css';
 
 const trats = localFont({
@@ -6,10 +8,7 @@ const trats = localFont({
   display: 'swap',
 });
 
-const sans = localFont({
-  src: '../../fonts/SwedenSansBook.woff2',
-  display: 'swap',
-});
+const sans = Golos_Text({ subsets: ['latin'] });
 
 export default function Contact() {
   return (
@@ -18,8 +17,9 @@ export default function Contact() {
       <div className={`${styles.email} ${sans.className}`}>
         <h2 className={trats.className}>Email</h2>
         <p>
-          If you want to discuss a project or just have a chat (I&#39;d love
-          that), drop me an email and I&#39;ll get back to you ASAP
+          If you'd like to discuss a potential project, hear more music or just
+          have a chat (I&#39;d love that), drop me an email and I&#39;ll get
+          back to you ASAP
         </p>
         <a
           href="mailto:hello@matthewcoffyn.com"

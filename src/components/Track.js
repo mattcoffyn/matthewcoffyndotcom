@@ -6,7 +6,7 @@ import { LuSkipBack } from 'react-icons/lu';
 import { LuSkipForward } from 'react-icons/lu';
 
 import styles from '../app/listen/listen.module.css';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export default function Track({
   name,
@@ -26,6 +26,7 @@ export default function Track({
   const canvasRef = useRef(null);
   const source = useRef(null);
   const analyserRef = useRef(null);
+  const [canvasCtx, setCanvasContext] = useState(null);
 
   useEffect(() => {
     if (
@@ -49,12 +50,14 @@ export default function Track({
     return;
   }, [isPlaying]);
 
+  useEffect(() => {
+    setCanvasContext(canvasRef?.current.getContext('2d'));
+    console.log(canvasCtx);
+  }, [canvasRef.current]);
+
   const visualizeAudio = () => {
-    const canvasCtx = canvasRef.current.getContext('2d');
     const canvasHeight = canvasRef.current.height;
     const canvasWidth = canvasRef.current.width;
-    console.log(canvasCtx);
-
     const renderFrame = () => {
       canvasCtx.clearRect(0, 0, canvasWidth, canvasHeight);
       analyserRef.current.fftSize = 1024;
@@ -144,7 +147,7 @@ export default function Track({
             : `${styles.canvasContainer} ${styles.someBlur}`
         }
       >
-        {!isPlaying && !trackPlaying === id ? '' : <span />}
+        {isPlaying && trackPlaying == id ? '' : <span />}
         {/* <span style={{ display: `${trackPlaying && 'none'}` }}></span> */}
 
         <canvas
