@@ -45,7 +45,7 @@ export default function About() {
         With no prior formal training, he went on to obtain an MA in Media
         Composition leading him to further develop his focus on creating sounds
         and music reflecting those deep textural emotions underpinning the human
-        experience uncovering the core sound of the internal state where
+        experience; uncovering the core sound of the internal state where
         expression, desire, discomfort, tension and release reside.
         <br />
       </div>
