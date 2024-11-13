@@ -17,17 +17,17 @@ export default function About() {
     <section className={`${styles.aboutGrid} ${trats.className}`}>
       <h1 className={styles.title}>About</h1>
       <div className={styles.aboutContainer}>
-        <div className={styles.imageContainer}>
+        <Image
+          className={styles.image}
+          alt="A picture of Matt looking kinda cool but admittedly quite moody."
+          src={profilePhoto}
+          sizes="50vw"
+          priority
+        />
+        {/* <div className={styles.imageContainer}>
           <div className={styles.hallucinationEffect}>
-            <Image
-              className={styles.image}
-              alt="A picture of Matt looking kinda cool but admittedly quite moody."
-              src={profilePhoto}
-              sizes="100vw"
-              priority
-            />
           </div>
-        </div>
+        </div> */}
 
         <div className={`${styles.bio} ${sans.className}`}>
           Matthew is a multi-instrumentalist, composer & sound designer working
