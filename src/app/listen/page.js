@@ -232,6 +232,14 @@ export default function Listen() {
               title="Play & Pause"
               onClick={togglePlayPause}
               className={styles.playPause}
+              disabled={audioRef?.current?.readyState < 4}
+              style={{
+                filter: `${
+                  audioRef?.current?.readyState < 4
+                    ? 'opacity(0.5)'
+                    : 'opacity(1)'
+                }`,
+              }}
             >
               {!isPlaying ? <LuPlay /> : <LuPause className={styles.pause} />}
             </button>
