@@ -1,6 +1,6 @@
 'use client';
 
-import { createRef, useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Golos_Text } from 'next/font/google';
 import localFont from 'next/font/local';
 import { LuPlay } from 'react-icons/lu';
@@ -10,7 +10,7 @@ import { LuSkipForward } from 'react-icons/lu';
 // import useMediaQuery from '../../components/useMediaQuery';
 import data from './data.json';
 import styles from './listen.module.css';
-import Image from 'next/image';
+
 import Track from '@/components/Track';
 
 const golos = Golos_Text({ subsets: ['latin'] });
