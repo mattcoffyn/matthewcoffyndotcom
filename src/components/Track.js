@@ -72,11 +72,11 @@ export default function Track({
 
       canvasCtx.shadowOffsetX = 10;
       canvasCtx.shadowOffsetY = 1;
-      canvasCtx.shadowColor = 'rgba(255, 0, 80, 0.3)';
+      canvasCtx.shadowColor = 'rgba(255, 0, 80, 0.1)';
       canvasCtx.shadowBlur = 2;
       canvasCtx.shadowOffsetX = -10;
       canvasCtx.shadowOffsetY = -1;
-      canvasCtx.shadowColor = 'rgba(0, 30, 255, 0.5)';
+      canvasCtx.shadowColor = 'rgba(0, 30, 255, 0.2)';
       canvasCtx.shadowBlur = 2;
       canvasCtx.beginPath();
       const sliceWidth = (canvasWidth * 1.0) / bufferLength;

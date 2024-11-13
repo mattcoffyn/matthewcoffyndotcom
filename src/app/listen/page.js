@@ -36,9 +36,9 @@ export default function Listen() {
   // let currentAudio = audioRef.current?.children[0].children[0];
 
   useEffect(() => {
-    setCurrentAudio(audioRef.current.children[trackPlaying].children[0]);
+    setCurrentAudio(audioRef.current?.children[trackPlaying].children[0]);
     console.log('Init audio update');
-  }, [audioRef.current]);
+  }, [currentAudio]);
 
   useEffect(() => {
     const seconds =
@@ -164,7 +164,8 @@ export default function Listen() {
 
   const changePlayerCurrentTime = () => {
     const progressPercentage =
-      (progressBar.current.value / Math.floor(duration)) * 100;
+      (progressBar.current.value / Math.floor(data[trackPlaying].duration)) *
+      100;
     waveformFill.current.style.setProperty(
       '--seek-before-width',
       `${progressPercentage}%`
@@ -172,6 +173,10 @@ export default function Listen() {
 
     setCurrentTime(progressBar.current.value);
   };
+
+  // if (audioRef.current?.children[trackPlaying].children[0].readyState < 4) {
+  //   return <p>Loading...</p>;
+  // }
 
   return (
     <section className={styles.listen}>
