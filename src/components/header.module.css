@@ -1,0 +1,36 @@
+.homeHeader,
+.mainHeader {
+  text-transform: uppercase;
+}
+
+.homeHeader {
+  grid-column: 1 / 3;
+  text-align: end;
+}
+
+.mainHeader {
+  grid-column: 2 / 3;
+}
+
+.homeHeader h1 {
+  font-size: clamp(2rem, 4vw + 1rem, 6rem);
+  text-shadow: 0px 0px 6px var(--reelText), -2px 0px 2px rgba(255, 21, 0, 0.286),
+    2px 0px 2px rgba(17, 0, 255, 0.255);
+}
+
+.homeHeader h2 {
+  font-size: clamp(0.8rem, 1vw + 0.7rem, 1.5rem);
+  text-shadow: 0px 0px 2px var(--reelText);
+}
+
+.mainHeader {
+  text-align: center;
+  font-size: 6rem;
+  color: transparent;
+  text-shadow: 0px 0px 2px var(--reelText);
+  text-transform: uppercase;
+  letter-spacing: 0.5rem;
+
+  /* transition: all 5s ease-out; */
+  /* animation: textShadow 1.6s infinite; */
+}

@@ -1,20 +1,7 @@
 .contactGrid {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: auto 1fr;
-  gap: 2vw;
-  padding-right: 4vw;
-  padding-top: 3rem;
   text-align: center;
-}
-
-.title {
-  text-align: center;
-  font-size: 4rem;
-  color: transparent;
-  text-shadow: 0px 0px 2px var(--reelText);
-  text-transform: uppercase;
-  letter-spacing: 0.5rem;
 }
 
 .email p,

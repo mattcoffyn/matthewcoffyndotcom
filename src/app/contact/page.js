@@ -13,7 +13,6 @@ const sans = Golos_Text({ subsets: ['latin'] });
 export default function Contact() {
   return (
     <section className={`${styles.contactGrid} ${trats.className}`}>
-      <h1 className={styles.title}>Contact</h1>
       <div className={`${styles.email} ${sans.className}`}>
         <h2 className={trats.className}>Email</h2>
         <p>

@@ -3,10 +3,45 @@ import localFont from 'next/font/local';
 import { Golos_Text } from 'next/font/google';
 
 import profilePhoto from '/public/profile2.jpg';
-import styles from './aboutAlt.module.css';
+import styles from './about.module.css';
+
+const threetwo = localFont({
+  src: '../../fonts/3270Medium.woff2',
+  display: 'swap',
+});
 
 const trats = localFont({
   src: '../../fonts/TRATS.woff2',
+  display: 'swap',
+});
+
+const tratv = localFont({
+  src: '../../fonts/TRATV.woff2',
+  display: 'swap',
+});
+
+const droge = localFont({
+  src: '../../fonts/W-Droge-Itinerary.woff',
+  display: 'swap',
+});
+
+const drogo = localFont({
+  src: '../../fonts/Drogowskaz.woff2',
+  display: 'swap',
+});
+
+const fluxischeBold = localFont({
+  src: '../../fonts/FluxischElse-Bold.woff2',
+  display: 'swap',
+});
+
+const fluxischeReg = localFont({
+  src: '../../fonts/FluxischElse-Regular.woff2',
+  display: 'swap',
+});
+
+const fluxischeLight = localFont({
+  src: '../../fonts/FluxischElse-Light.woff2',
   display: 'swap',
 });
 
@@ -14,9 +49,9 @@ const sans = Golos_Text({ subsets: ['latin'] });
 
 export default function About() {
   return (
-    <section className={`${styles.aboutGrid} ${trats.className}`}>
-      <h1 className={styles.title}>About</h1>
-      <div className={styles.aboutContainer}>
+    <section className={`${styles.aboutGrid}`}>
+      <div className={styles.imageContainer}>
+        <div className={styles.hallucinationEffect}></div>
         <Image
           className={styles.image}
           alt="A picture of Matt looking kinda cool but admittedly quite moody."
@@ -24,12 +59,10 @@ export default function About() {
           sizes="50vw"
           priority
         />
-        {/* <div className={styles.imageContainer}>
-          <div className={styles.hallucinationEffect}>
-          </div>
-        </div> */}
+      </div>
 
-        <div className={`${styles.bio} ${sans.className}`}>
+      <div className={`${styles.bio} ${fluxischeLight.className}`}>
+        <p>
           Matthew is a multi-instrumentalist, composer & sound designer working
           mostly in film and television. A saxophonist from a young age, his
           creative focus has evolved over a lifetime in the music industry that
@@ -50,7 +83,7 @@ export default function About() {
           the human experience; uncovering the core sound of the internal state
           where expression, desire, discomfort, tension and release reside.
           <br />
-        </div>
+        </p>
       </div>
     </section>
   );

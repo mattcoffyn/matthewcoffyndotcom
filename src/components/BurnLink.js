@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { useState } from 'react';
-import styles from './nav.module.css';
+import styles from './burnLink.module.css';
 
 export default function BurnLink({ text, slug }) {
   const [burn, setBurn] = useState(0);

@@ -13,10 +13,10 @@ const trats = localFont({
 export default function Home() {
   return (
     <section className={`${styles.home} ${trats.className}`}>
-      <div className={styles.header}>
+      {/* <div className={styles.header}>
         <h1>Matthew Coffyn</h1>
         <h2>Film Composer | Sound Creative</h2>
-      </div>
+      </div> */}
       <ul>
         <li>
           <a

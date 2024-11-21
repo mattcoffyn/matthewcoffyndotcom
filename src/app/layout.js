@@ -1,6 +1,7 @@
 import Nav from '@/components/Nav';
 import Background from '@/components/Background';
 import '@/styles/globals.css';
+import Header from '@/components/Header';
 
 export const metadata = {
   title: 'matthewcoffyndotcom',
@@ -12,9 +13,12 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <Background />
-        <div className="main">
-          <Nav />
-          <main className="content">{children}</main>
+        <div className="pageContainer">
+          <div className="page">
+            <Header />
+            <Nav />
+            <main className="content">{children}</main>
+          </div>
         </div>
       </body>
     </html>

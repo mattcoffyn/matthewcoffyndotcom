@@ -21,12 +21,14 @@ export default function Track({
   trackPlaying,
   audioRef,
   calculateLength,
-  currentAudio,
+  globalVolume,
 }) {
   const canvasRef = useRef(null);
   const source = useRef(null);
   const analyserRef = useRef(null);
   const [canvasCtx, setCanvasContext] = useState(null);
+  const [volume, setVolume] = useState(0);
+  const [hasPlayed, setHasPlayed] = useState(false);
 
   useEffect(() => {
     if (
@@ -38,48 +40,71 @@ export default function Track({
         source.current = audioContext.createMediaElementSource(
           audioRef.current?.children[id].children[0]
         );
-        console.log(source.current);
-
         const analyser = audioContext.createAnalyser();
         analyserRef.current = analyser;
         source.current.connect(analyser);
         analyser.connect(audioContext.destination);
       }
+      analyserRef.current.fftSize = 1024;
       visualizeAudio();
+      measureVolume();
+      setHasPlayed(true);
     }
     return;
   }, [isPlaying]);
 
   useEffect(() => {
     setCanvasContext(canvasRef?.current.getContext('2d'));
-    console.log(canvasCtx);
   }, [canvasRef.current]);
+
+  const measureVolume = () => {
+    const pcmData = new Float32Array(analyserRef.current.fftSize);
+    let vol = 0;
+    const onFrame = () => {
+      analyserRef.current.getFloatTimeDomainData(pcmData);
+      let sumSquares = 0.0;
+      for (const amplitude of pcmData) {
+        sumSquares += amplitude * amplitude;
+      }
+      const volFloat = Math.sqrt(sumSquares / pcmData.length) * 320;
+
+      if (volFloat > 100) {
+        vol = 100;
+      } else {
+        vol = volFloat;
+      }
+
+      setVolume(vol / 100);
+      requestAnimationFrame(onFrame);
+    };
+    requestAnimationFrame(onFrame);
+  };
 
   const visualizeAudio = () => {
     const canvasHeight = canvasRef.current.height;
     const canvasWidth = canvasRef.current.width;
     const renderFrame = () => {
       canvasCtx.clearRect(0, 0, canvasWidth, canvasHeight);
-      analyserRef.current.fftSize = 1024;
       const bufferLength = analyserRef.current.frequencyBinCount;
       const dataArray = new Uint8Array(bufferLength);
       canvasCtx.clearRect(0, 0, canvasWidth, canvasHeight);
       analyserRef.current.getByteTimeDomainData(dataArray);
-      canvasCtx.fillStyle = 'rgba(108, 108, 98, 0)';
+
+      canvasCtx.fillStyle = 'rgb(108 108 98 / 0%)';
+      // canvasCtx.strokeStyle = 'rgb(232 227 209 / 75%)';
+      canvasCtx.strokeStyle = 'rgb(225, 255, 255)';
       canvasCtx.fillRect(0, 0, canvasWidth, canvasHeight);
       canvasCtx.lineWidth = 2;
-      canvasCtx.strokeStyle = 'rgba(255, 255, 255, 1)';
-
-      canvasCtx.shadowOffsetX = 10;
-      canvasCtx.shadowOffsetY = 1;
-      canvasCtx.shadowColor = 'rgba(255, 0, 80, 0.1)';
-      canvasCtx.shadowBlur = 2;
-      canvasCtx.shadowOffsetX = -10;
-      canvasCtx.shadowOffsetY = -1;
-      canvasCtx.shadowColor = 'rgba(0, 30, 255, 0.2)';
-      canvasCtx.shadowBlur = 2;
+      // canvasCtx.shadowOffsetX = 10;
+      // canvasCtx.shadowOffsetY = 1;
+      // canvasCtx.shadowColor = 'rgb(255 0 80 / 10%)';
+      // canvasCtx.shadowBlur = 2;
+      // canvasCtx.shadowOffsetX = -10;
+      // canvasCtx.shadowOffsetY = -1;
+      // canvasCtx.shadowColor = 'rgb(0 30 255 / 20%)';
+      // canvasCtx.shadowBlur = 2;
       canvasCtx.beginPath();
-      const sliceWidth = (canvasWidth * 1.0) / bufferLength;
+      const sliceWidth = (canvasWidth * 1) / bufferLength;
       let x = 0;
 
       for (let i = 0; i < bufferLength; i++) {
@@ -90,7 +115,6 @@ export default function Track({
         } else {
           canvasCtx.lineTo(x, y);
         }
-
         x += sliceWidth;
       }
 
@@ -99,7 +123,7 @@ export default function Track({
 
       requestAnimationFrame(renderFrame);
     };
-    renderFrame();
+    requestAnimationFrame(renderFrame);
   };
 
   return (
@@ -127,9 +151,23 @@ export default function Track({
         onClick={handleTrackSelector}
         className={styles.playTrack}
       >
-        {isPlaying && trackPlaying == id ? <LuPause /> : <LuPlay />}
+        {isPlaying && trackPlaying == id ? (
+          <LuPause
+            style={{
+              fontSize: '1.3rem',
+              filter: `opacity(${1 - volume / 2})`,
+            }}
+          />
+        ) : (
+          <LuPlay />
+        )}
       </button>
-      <span className={`${styles.tracklistTitle} ${golos.className}`}>
+      <span
+        className={`${styles.tracklistTitle} ${golos.className}`}
+        style={{
+          filter: `opacity(${1 - volume / 2})`,
+        }}
+      >
         {name}
       </span>
       {/* <div
@@ -140,26 +178,47 @@ export default function Track({
                 }}
                 > */}
       <div
-        // className={styles.canvasContainer}
         className={
           isPlaying && trackPlaying == id
             ? `${styles.canvasContainer}`
             : `${styles.canvasContainer} ${styles.someBlur}`
         }
+        // style={{
+        //   boxShadow: `0px 0px 10px 0px inset rgba(0, 0, 0, 1)`,
+        // }}
       >
-        {!canvasCtx || !isPlaying ? <span /> : ''}
-        {/* <span style={{ display: `${trackPlaying && 'none'}` }}></span> */}
-
+        {/* {!hasPlayed ? <span /> : ''} */}
+        <span
+          style={{
+            boxShadow: `0px 0px 20px 10px rgba(228, 200, 150, ${volume / 2})`,
+            height: 0,
+            // background: `rgba(228, 103, 1, ${volume})`,
+          }}
+        />
         <canvas
           className={styles.canvas}
           ref={canvasRef}
-          width={500}
-          height={40}
+          width={400}
+          height={50}
+          role="presentation"
+          style={{
+            filter: `drop-shadow(1px 1px 10px rgba(228, ${
+              100 - volume * 100
+            }, ${100 - volume * 100}, ${volume})) saturate(${volume}) opacity(${
+              volume * 4
+            })`,
+          }}
         />
       </div>
 
-      <span className={`${styles.trackDuration} ${golos.className}`}>
+      <span
+        className={`${styles.trackDuration} ${golos.className}`}
+        style={{
+          filter: `opacity(${1 - volume / 2})`,
+        }}
+      >
         {calculateLength(duration)}
+        {/* {volume} */}
       </span>
     </div>
   );

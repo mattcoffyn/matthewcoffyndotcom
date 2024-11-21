@@ -137,7 +137,6 @@ export default function Listen() {
   const handleTimeUpdate = (e) => {
     setCurrentTime(e.target.currentTime);
     progressBar.current.value = e.target.currentTime / e.target.duration;
-    console.log(progressBar.current.value);
   };
 
   const whilePlaying = () => {
@@ -180,13 +179,13 @@ export default function Listen() {
 
   return (
     <section className={styles.listen}>
-      <h1
+      {/* <h1
         className={`${styles.title} ${trats.className} ${
           isPlaying ? styles.titleBlur : ''
         }`}
       >
         Listen
-      </h1>
+      </h1> */}
 
       <div className={`${styles.playerControlContainer}`}>
         <div
@@ -293,7 +292,7 @@ export default function Listen() {
             trackPlaying={trackPlaying}
             audioRef={audioRef}
             calculateLength={calculateLength}
-            currentAudio={currentAudio}
+            // globalVolume={globalVolume}
           />
         ))}
       </div>
